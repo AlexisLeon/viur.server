@@ -3,8 +3,9 @@ const config = require('../config')
 
 admin.initializeApp({
   credential: admin.credential.cert({
-    "private_key": process.env.FIREBASE_PRIVATE_KEY,
-    "client_email": process.env.FIREBASE_CLIENT_EMAIL,
+	projectId: process.env.FIREBASE_PROJECT_ID,
+	privateKey: process.env.FIREBASE_PRIVATE_KEY,
+	clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
   }),
   databaseURL: config.firestore.database
 });
