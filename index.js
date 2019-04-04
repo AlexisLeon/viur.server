@@ -50,7 +50,8 @@ async function createCheckin(req, res) {
       // SMS
       const hostDoc = await visitorData.host.get()
       const hostData = hostDoc.data()
-      // await nexmo.sendNotification(hostData.phone, name)
+      await nexmo.sendNotification(hostData.phone, name)
+      console.log('[nexmo] Send SMS to', hostData.phone)
 
       res.json({ ...visitorData, host: hostData })
     }
