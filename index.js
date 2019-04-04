@@ -4,12 +4,13 @@ const mail = require('./services/mail')
 const db = require('./services/firebase')
 const nexmo = require('./services/nexmo')
 const app = express()
+const port = process.env.PORT || 3000
 
 app.use(bodyParser.json())
 
 app.get('/hosts', getHosts)
 app.post('/checkin', createCheckin)
-app.listen(3000, () => console.log("Listening on port 3000"))
+app.listen(port, () => console.log(`Listening on port ${port}`))
 
 // var hostRef = db.collection('hosts').doc()
 // hostRef.set({ name: "Persona 1" })
