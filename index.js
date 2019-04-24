@@ -32,12 +32,18 @@ async function getHosts(req, res) {
 }
 
 async function createCheckin(req, res) {
-  const { email, name, phone, host } = req.body
+  const { email, name, phone, host, reason } = req.body
   
   try {
     // Save
     var visitorRef = db.collection('visitors').doc()
-    await visitorRef.set({ email, name, phone, host: db.doc('hosts/' + host) })
+    await visitorRef.set({
+      email,
+      name,
+      phone,
+      host: db.doc('hosts/' + host),
+      reason
+    })
 
     // Response
     var doc = await visitorRef.get()
