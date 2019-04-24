@@ -15,8 +15,9 @@ module.exports = {
    * @param {String} visitorName Visitor name
    */
   sendNotification: (hostPhone, visitorName) => new Promise((resolve, reject) => {
-    const msg = `${visitorName} te está esperando en recepción`
-    instance.message.sendSms(config.nexmo.brandName, hostPhone, msg, (err, response) => {
+    const msg = `Hola!, ${visitorName} te está esperando en la recepción`;
+    const opts = { type: 'unicode' }
+    instance.message.sendSms(config.nexmo.brandName, hostPhone, msg, opts (err, response) => {
       if(err) reject({ err });
       else if (response.messages[0].status === '0') resolve({ phone: hostPhone })
       else reject({ response })
